@@ -195,6 +195,12 @@ publish/
 # in these scripts will be unencrypted
 PublishScripts/
 
+# Local Documents
+/docs
+# AI & Tools
+/CLAUDE.md
+/.codegraph
+
 # NuGet Packages
 *.nupkg
 # NuGet Symbol Packages

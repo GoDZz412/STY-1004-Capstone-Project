@@ -200,6 +200,7 @@ PublishScripts/
 # AI & Tools
 /CLAUDE.md
 /.codegraph
+/.superpowers
 
 # NuGet Packages
 *.nupkg

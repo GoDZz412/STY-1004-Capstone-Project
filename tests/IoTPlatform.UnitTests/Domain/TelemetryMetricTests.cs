@@ -40,6 +40,18 @@ public class TelemetryMetricTests
     }
 
     [TestMethod]
+    public void Create_UndefinedMetricType_Throws()
+    {
+        Assert.ThrowsExactly<DomainValidationException>(() =>
+            new TelemetryMetric(
+                Guid.NewGuid(),
+                (MetricType)999,
+                25m,
+                "Celsius",
+                DateTime.UtcNow));
+    }
+
+    [TestMethod]
     [DataRow(null)]
     [DataRow("")]
     [DataRow("   ")]
@@ -57,7 +69,7 @@ public class TelemetryMetricTests
     [TestMethod]
     public void Create_UnitLongerThanMax_Throws()
     {
-        var longUnit = new string('x', 21);
+        var longUnit = new string('x', TelemetryMetric.UnitMaxLength + 1);
 
         Assert.ThrowsExactly<DomainValidationException>(() =>
             new TelemetryMetric(
@@ -69,9 +81,26 @@ public class TelemetryMetricTests
     }
 
     [TestMethod]
-    public void Create_FutureTimestampBeyondFiveMinutes_Throws()
+    public void Create_UnitExactlyMaxLength_Succeeds()
     {
-        var futureDate = DateTime.UtcNow.AddMinutes(6);
+        var unit = new string('x', TelemetryMetric.UnitMaxLength);
+
+        var metric = new TelemetryMetric(
+            Guid.NewGuid(),
+            MetricType.Temperature,
+            25m,
+            unit,
+            DateTime.UtcNow);
+
+        Assert.AreEqual(unit, metric.Unit);
+    }
+
+    [TestMethod]
+    public void Create_FutureTimestampBeyondAllowedClockSkew_Throws()
+    {
+        var futureDate = DateTime.UtcNow
+            .Add(TelemetryMetric.AllowedClockSkew)
+            .AddMinutes(1);
 
         Assert.ThrowsExactly<DomainValidationException>(() =>
             new TelemetryMetric(
@@ -83,9 +112,11 @@ public class TelemetryMetricTests
     }
 
     [TestMethod]
-    public void Create_FutureTimestampWithinFiveMinutes_Succeeds()
+    public void Create_FutureTimestampWithinAllowedClockSkew_Succeeds()
     {
-        var futureDate = DateTime.UtcNow.AddMinutes(4);
+        var futureDate = DateTime.UtcNow
+            .Add(TelemetryMetric.AllowedClockSkew)
+            .Subtract(TimeSpan.FromMinutes(1));
 
         var metric = new TelemetryMetric(
             Guid.NewGuid(),

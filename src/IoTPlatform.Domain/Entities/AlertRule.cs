@@ -16,9 +16,8 @@ public sealed class AlertRule : Entity
         MetricType metricType,
         ComparisonOperator @operator,
         decimal threshold,
-        AlertSeverity severity,
-        Guid? id = null)
-        : base(id ?? Guid.NewGuid())
+        AlertSeverity severity)
+        : base(Guid.NewGuid())
     {
         DeviceAssetId = Guard.NotEmpty(
             deviceAssetId, nameof(DeviceAssetId));

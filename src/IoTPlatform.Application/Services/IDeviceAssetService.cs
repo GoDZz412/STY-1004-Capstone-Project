@@ -1,5 +1,5 @@
 using IoTPlatform.Application.DTOs;
-using IoTPlatform.Domain.Enums;         // <-- check: DeviceType, DeviceStatus
+using IoTPlatform.Domain.Enums;
 
 namespace IoTPlatform.Application.Services;
 

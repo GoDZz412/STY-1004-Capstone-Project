@@ -1,3 +1,4 @@
+
 using IoTPlatform.Domain.Common;
 using IoTPlatform.Domain.Enums;
 
@@ -10,14 +11,16 @@ public sealed class TelemetryMetric : Entity
 {
     public const int UnitMaxLength = 20;
 
+    public static readonly TimeSpan AllowedClockSkew =
+        TimeSpan.FromMinutes(5);
+
     public TelemetryMetric(
         Guid deviceAssetId,
         MetricType metricType,
         decimal value,
         string unit,
-        DateTime recordedAtUtc,
-        Guid? id = null)
-        : base(id ?? Guid.NewGuid())
+        DateTime recordedAtUtc)
+        : base(Guid.NewGuid())
     {
         DeviceAssetId = Guard.NotEmpty(
             deviceAssetId, nameof(DeviceAssetId));
@@ -33,7 +36,7 @@ public sealed class TelemetryMetric : Entity
         RecordedAtUtc = Guard.NotInFuture(
             recordedAtUtc,
             nameof(RecordedAtUtc),
-            TimeSpan.FromMinutes(5));
+            AllowedClockSkew);
     }
 
     // Required by Entity Framework Core.

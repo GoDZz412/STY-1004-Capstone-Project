@@ -93,5 +93,12 @@ public sealed class DeviceAsset : Entity
 
         // ── B: AddAlertRule goes here (P1-W2-B2) ──
 
-    // ── C: LogMaintenance goes here (P1-W2-C3) ──
+    public MaintenanceLog LogMaintenance(MaintenanceType maintenanceType, string technician,
+                                         string description, DateTime performedOnUtc)
+    {
+        EnsureNotDecommissioned();
+        var log = new MaintenanceLog(Id, maintenanceType, technician, description, performedOnUtc);
+        _maintenanceLogs.Add(log);
+        return log;
+    }
 }

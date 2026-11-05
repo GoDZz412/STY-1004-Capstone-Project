@@ -1,5 +1,6 @@
 using IoTPlatform.Domain.Common;
 using IoTPlatform.Domain.Enums;
+using IoTPlatform.Domain.Exceptions;
 using IoTPlatform.Domain.ValueObjects;
 
 namespace IoTPlatform.Domain.Entities;
@@ -47,4 +48,42 @@ public sealed class DeviceAsset : Entity
 
     public static bool CanTransition(DeviceStatus from, DeviceStatus to) =>
         Transitions.TryGetValue(from, out var allowed) && Array.IndexOf(allowed, to) >= 0;
+    
+        public void ChangeStatus(DeviceStatus newStatus)
+    {
+        Guard.Defined(newStatus, nameof(newStatus));
+        if (!CanTransition(Status, newStatus))
+            throw new InvalidStatusTransitionException(Status, newStatus);
+        Status = newStatus;
+    }
+
+    public void Activate() => ChangeStatus(DeviceStatus.Active);
+    public void StartMaintenance() => ChangeStatus(DeviceStatus.UnderMaintenance);
+    public void CompleteMaintenance() => ChangeStatus(DeviceStatus.Active);
+    public void Decommission() => ChangeStatus(DeviceStatus.Decommissioned);
+
+        public void Rename(string newName)
+    {
+        EnsureNotDecommissioned();
+        Name = Guard.RequiredText(newName, nameof(newName), NameMaxLength);
+    }
+
+    public void Relocate(string newLocation)
+    {
+        EnsureNotDecommissioned();
+        Location = Guard.RequiredText(newLocation, nameof(newLocation), LocationMaxLength);
+    }
+
+    public void UpdateOperatingRange(OperatingRange newRange)
+    {
+        EnsureNotDecommissioned();
+        OperatingRange = Guard.Required(newRange, nameof(newRange));
+    }
+
+    // Private per PHASE_1 §3.6. B's AddAlertRule and C's LogMaintenance live in this class and call it first.
+    private void EnsureNotDecommissioned()
+    {
+        if (Status == DeviceStatus.Decommissioned)
+            throw new DeviceDecommissionedException(Id);
+    }
 }

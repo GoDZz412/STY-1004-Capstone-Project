@@ -1,0 +1,53 @@
+using IoTPlatform.Application.Abstractions.Repositories;
+using IoTPlatform.Domain.Entities;
+using IoTPlatform.Domain.Enums;
+using IoTPlatform.Domain.ValueObjects;
+using IoTPlatform.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
+
+namespace IoTPlatform.Infrastructure.Repositories;
+
+public sealed class DeviceAssetRepository : IDeviceAssetRepository
+{
+    private readonly IoTPlatformDbContext _context;
+
+    public DeviceAssetRepository(IoTPlatformDbContext context)
+    {
+        _context = context;
+    }
+
+    public Task<DeviceAsset?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default) =>
+        _context.DeviceAssets
+            .Include(d => d.AlertRules)
+            .Include(d => d.MaintenanceLogs)
+            .FirstOrDefaultAsync(d => d.Id == id, cancellationToken);
+
+    public Task<DeviceAsset?> GetBySerialNumberAsync(SerialNumber serialNumber, CancellationToken cancellationToken = default) =>
+        _context.DeviceAssets.FirstOrDefaultAsync(d => d.SerialNumber == serialNumber, cancellationToken);
+
+    public async Task<IReadOnlyList<DeviceAsset>> ListAsync(CancellationToken cancellationToken = default) =>
+        await _context.DeviceAssets
+            .OrderBy(d => d.Name)
+            .ToListAsync(cancellationToken);
+
+    public async Task<IReadOnlyList<DeviceAsset>> ListByStatusAsync(DeviceStatus status, CancellationToken cancellationToken = default) =>
+        await _context.DeviceAssets
+            .Where(d => d.Status == status)
+            .OrderBy(d => d.Name)
+            .ToListAsync(cancellationToken);
+
+    public Task<bool> ExistsBySerialNumberAsync(SerialNumber serialNumber, CancellationToken cancellationToken = default) =>
+        _context.DeviceAssets.AnyAsync(d => d.SerialNumber == serialNumber, cancellationToken);
+
+    public async Task AddAsync(DeviceAsset device, CancellationToken cancellationToken = default) =>
+        await _context.DeviceAssets.AddAsync(device, cancellationToken);
+
+    public void Update(DeviceAsset device)
+    {
+        var entry = _context.Entry(device);
+        if (entry.State == EntityState.Detached)
+            entry.State = EntityState.Modified;
+    }
+
+    public void Remove(DeviceAsset device) => _context.DeviceAssets.Remove(device);
+}

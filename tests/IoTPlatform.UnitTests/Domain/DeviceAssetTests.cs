@@ -269,7 +269,7 @@ public class DeviceAssetTests
     {
         var device = Create();
 
-        Assert.AreEqual(0, device.AlertRules.Count);
-        Assert.AreEqual(0, device.MaintenanceLogs.Count);
+        Assert.IsEmpty(device.AlertRules);
+        Assert.IsEmpty(device.MaintenanceLogs);
     }
 }

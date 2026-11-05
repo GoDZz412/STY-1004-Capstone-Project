@@ -20,6 +20,7 @@ public sealed class IoTPlatformDbContext : DbContext, IUnitOfWork
     }
 
     public DbSet<DeviceAsset> DeviceAssets => Set<DeviceAsset>();
+    public DbSet<MaintenanceLog> MaintenanceLogs => Set<MaintenanceLog>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

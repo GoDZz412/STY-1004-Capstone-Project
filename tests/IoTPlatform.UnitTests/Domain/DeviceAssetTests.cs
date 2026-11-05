@@ -262,4 +262,14 @@ public class DeviceAssetTests
     public void UpdateOperatingRange_WhenDecommissioned_Throws() =>
         Assert.ThrowsExactly<DeviceDecommissionedException>(
             () => CreateIn(DeviceStatus.Decommissioned).UpdateOperatingRange(new OperatingRange(0, 10, "C")));
+        // ---- child collections ----
+
+    [TestMethod]
+    public void NewDevice_HasEmptyChildCollections()
+    {
+        var device = Create();
+
+        Assert.AreEqual(0, device.AlertRules.Count);
+        Assert.AreEqual(0, device.MaintenanceLogs.Count);
+    }
 }

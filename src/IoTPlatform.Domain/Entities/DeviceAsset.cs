@@ -9,6 +9,8 @@ public sealed class DeviceAsset : Entity
 {
     public const int NameMaxLength = 100;
     public const int LocationMaxLength = 150;
+    private readonly List<AlertRule> _alertRules = new();
+    private readonly List<MaintenanceLog> _maintenanceLogs = new();
 
     public SerialNumber SerialNumber { get; private set; } = null!;
     public string Name { get; private set; } = null!;
@@ -18,6 +20,8 @@ public sealed class DeviceAsset : Entity
     public DateTime InstalledOnUtc { get; private set; }
     public DeviceStatus Status { get; private set; }
     public DateTime CreatedAtUtc { get; private set; }
+    public IReadOnlyCollection<AlertRule> AlertRules => _alertRules.AsReadOnly();
+    public IReadOnlyCollection<MaintenanceLog> MaintenanceLogs => _maintenanceLogs.AsReadOnly();
 
     private DeviceAsset() { } // for EF Core
 
@@ -86,4 +90,8 @@ public sealed class DeviceAsset : Entity
         if (Status == DeviceStatus.Decommissioned)
             throw new DeviceDecommissionedException(Id);
     }
+
+        // ── B: AddAlertRule goes here (P1-W2-B2) ──
+
+    // ── C: LogMaintenance goes here (P1-W2-C3) ──
 }

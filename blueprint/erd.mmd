@@ -5,7 +5,7 @@ erDiagram
     %% Enum columns store the enum name as text (nvarchar(30)).
     DeviceAssets ||--o{ TelemetryMetrics : "records (ON DELETE CASCADE)"
     DeviceAssets ||--o{ AlertRules : "is watched by (ON DELETE CASCADE)"
-    DeviceAssets ||--o{ MaintenanceLogs : "has history (ON DELETE RESTRICT)"
+    DeviceAssets ||--o{ MaintenanceLogs : "has history (ON DELETE NO ACTION, EF Restrict)"
 
     DeviceAssets {
         uniqueidentifier Id PK "PK_DeviceAssets"

@@ -2,6 +2,7 @@ using IoTPlatform.Application.Abstractions.Repositories;
 using IoTPlatform.Infrastructure;
 using IoTPlatform.Infrastructure.Persistence;
 using IoTPlatform.Infrastructure.Repositories;
+using IoTPlatform.Infrastructure.Seeding;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace IoTPlatform.UnitTests.Infrastructure;
@@ -21,6 +22,7 @@ public class DependencyInjectionTests
     [DataRow(typeof(IAlertRuleRepository), typeof(AlertRuleRepository))]
     [DataRow(typeof(IMaintenanceLogRepository), typeof(MaintenanceLogRepository))]
     [DataRow(typeof(IUnitOfWork), typeof(IoTPlatformDbContext))]
+    [DataRow(typeof(JsonSeedLoader), typeof(JsonSeedLoader))]
     public void AddInfrastructure_ValidConnectionString_ResolvesService(Type serviceType, Type expectedType)
     {
         using var provider = BuildProvider();

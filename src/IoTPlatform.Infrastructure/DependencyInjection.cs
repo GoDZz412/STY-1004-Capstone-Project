@@ -1,6 +1,7 @@
 using IoTPlatform.Application.Abstractions.Repositories;
 using IoTPlatform.Infrastructure.Persistence;
 using IoTPlatform.Infrastructure.Repositories;
+using IoTPlatform.Infrastructure.Seeding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -26,6 +27,9 @@ public static class DependencyInjection
         services.AddScoped<ITelemetryMetricRepository, TelemetryMetricRepository>();
         services.AddScoped<IAlertRuleRepository, AlertRuleRepository>();
         services.AddScoped<IMaintenanceLogRepository, MaintenanceLogRepository>();
+
+        // Stateless; reads Seeding/Data/*.json when SeedAsync is called with a DbContext.
+        services.AddSingleton(_ => new JsonSeedLoader());
 
         return services;
     }

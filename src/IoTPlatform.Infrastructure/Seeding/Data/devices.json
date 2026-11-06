@@ -1,0 +1,75 @@
+[
+  {
+    "serialNumber": "IOT-0001-PU",
+    "name": "Raw Water Intake Pump 1",
+    "deviceType": "Pump",
+    "location": "Intake Station",
+    "operatingRange": { "min": 0, "max": 10, "unit": "bar" },
+    "installedOnUtc": "2025-03-10T09:00:00Z",
+    "status": "Active"
+  },
+  {
+    "serialNumber": "IOT-0002-PU",
+    "name": "Filter Feed Pump 2",
+    "deviceType": "Pump",
+    "location": "Filtration Building",
+    "operatingRange": { "min": 0, "max": 8, "unit": "bar" },
+    "installedOnUtc": "2025-03-12T09:00:00Z",
+    "status": "UnderMaintenance"
+  },
+  {
+    "serialNumber": "IOT-0003-MO",
+    "name": "Clarifier Drive Motor",
+    "deviceType": "Motor",
+    "location": "Clarifier Basin A",
+    "operatingRange": { "min": 0, "max": 85, "unit": "°C" },
+    "installedOnUtc": "2025-05-20T10:00:00Z",
+    "status": "Active"
+  },
+  {
+    "serialNumber": "IOT-0004-CO",
+    "name": "Aeration Blower Compressor",
+    "deviceType": "Compressor",
+    "location": "Aeration Basin",
+    "operatingRange": { "min": 0, "max": 12, "unit": "bar" },
+    "installedOnUtc": "2025-06-02T10:00:00Z",
+    "status": "Active"
+  },
+  {
+    "serialNumber": "IOT-0005-SE",
+    "name": "Treated Water Flow Meter",
+    "deviceType": "Sensor",
+    "location": "Outlet Channel",
+    "operatingRange": { "min": 0, "max": 500, "unit": "m³/h" },
+    "installedOnUtc": "2025-08-15T11:00:00Z",
+    "status": "Active"
+  },
+  {
+    "serialNumber": "IOT-0006-SE",
+    "name": "Chemical Store Humidity Sensor",
+    "deviceType": "Sensor",
+    "location": "Chemical Storage Room",
+    "operatingRange": { "min": 10, "max": 80, "unit": "%" },
+    "installedOnUtc": "2026-10-28T14:00:00Z",
+    "status": "Provisioned"
+  },
+  {
+    "serialNumber": "IOT-0007-GW",
+    "name": "Plant Network Gateway",
+    "deviceType": "Gateway",
+    "location": "Control Room",
+    "operatingRange": { "min": 11, "max": 13, "unit": "V" },
+    "installedOnUtc": "2025-02-01T08:00:00Z",
+    "status": "Active"
+  },
+  {
+    "serialNumber": "IOT-0008-PU",
+    "name": "Old Backwash Pump",
+    "deviceType": "Pump",
+    "location": "Filtration Building",
+    "operatingRange": { "min": 0, "max": 6, "unit": "bar" },
+    "installedOnUtc": "2019-04-05T09:00:00Z",
+    "status": "Decommissioned"
+  }
+]
+

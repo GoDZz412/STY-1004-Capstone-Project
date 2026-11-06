@@ -1,0 +1,149 @@
+classDiagram
+%% Domain model on main (71792ae). Only public members are shown.
+direction TB
+
+class Entity {
+    <<abstract>>
+    +Guid Id
+    +Equals(Entity) bool
+}
+
+class DeviceAsset {
+    <<aggregate root>>
+    +SerialNumber SerialNumber
+    +string Name
+    +DeviceType DeviceType
+    +string Location
+    +OperatingRange OperatingRange
+    +DateTime InstalledOnUtc
+    +DeviceStatus Status
+    +DateTime CreatedAtUtc
+    +List~AlertRule~ AlertRules
+    +List~MaintenanceLog~ MaintenanceLogs
+    +ChangeStatus(DeviceStatus)
+    +Activate()
+    +StartMaintenance()
+    +CompleteMaintenance()
+    +Decommission()
+    +Rename(string)
+    +Relocate(string)
+    +UpdateOperatingRange(OperatingRange)
+    +AddAlertRule(...) AlertRule
+    +LogMaintenance(...) MaintenanceLog
+    +CanTransition(DeviceStatus, DeviceStatus)$ bool
+}
+
+class AlertRule {
+    +Guid DeviceAssetId
+    +string Name
+    +MetricType MetricType
+    +ComparisonOperator Operator
+    +decimal Threshold
+    +AlertSeverity Severity
+    +bool IsEnabled
+    +Enable()
+    +Disable()
+    +IsTriggeredBy(TelemetryMetric) bool
+}
+
+class MaintenanceLog {
+    +Guid DeviceAssetId
+    +MaintenanceType MaintenanceType
+    +string Technician
+    +string Description
+    +DateTime PerformedOnUtc
+}
+
+class TelemetryMetric {
+    <<separate aggregate>>
+    +Guid DeviceAssetId
+    +MetricType MetricType
+    +decimal Value
+    +string Unit
+    +DateTime RecordedAtUtc
+}
+
+class SerialNumber {
+    <<value object>>
+    +string Value
+    +Create(string)$ SerialNumber
+}
+note for SerialNumber "format IOT-nnnn-AA"
+
+class OperatingRange {
+    <<value object>>
+    +decimal Min
+    +decimal Max
+    +string Unit
+    +Contains(decimal) bool
+}
+
+class DeviceStatus {
+    <<enumeration>>
+    Provisioned
+    Active
+    UnderMaintenance
+    Decommissioned
+}
+
+class DeviceType {
+    <<enumeration>>
+    Sensor
+    Pump
+    Motor
+    Compressor
+    Gateway
+}
+
+class MetricType {
+    <<enumeration>>
+    Temperature
+    Pressure
+    Vibration
+    FlowRate
+    Humidity
+    Voltage
+}
+
+class AlertSeverity {
+    <<enumeration>>
+    Info
+    Warning
+    Critical
+}
+
+class ComparisonOperator {
+    <<enumeration>>
+    GreaterThan
+    LessThan
+}
+
+class MaintenanceType {
+    <<enumeration>>
+    Inspection
+    Repair
+    PartReplacement
+    Calibration
+}
+
+%% Inheritance
+Entity <|-- DeviceAsset
+Entity <|-- AlertRule
+Entity <|-- MaintenanceLog
+Entity <|-- TelemetryMetric
+
+%% Aggregate composition and associations
+DeviceAsset "1" *-- "*" AlertRule : AlertRules
+DeviceAsset "1" *-- "*" MaintenanceLog : MaintenanceLogs
+DeviceAsset "1" -- "*" TelemetryMetric : by DeviceAssetId
+DeviceAsset *-- SerialNumber
+DeviceAsset *-- OperatingRange
+
+%% Enum usage
+DeviceAsset ..> DeviceStatus
+DeviceAsset ..> DeviceType
+AlertRule ..> MetricType
+AlertRule ..> ComparisonOperator
+AlertRule ..> AlertSeverity
+MaintenanceLog ..> MaintenanceType
+TelemetryMetric ..> MetricType

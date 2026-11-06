@@ -1,6 +1,6 @@
-using IoTPlatform.Domain.Entities;      // <-- check: where DeviceAsset lives
-using IoTPlatform.Domain.Enums;         // <-- check: where DeviceStatus lives
-using IoTPlatform.Domain.ValueObjects;  // <-- check: where SerialNumber lives
+using IoTPlatform.Domain.Entities;
+using IoTPlatform.Domain.Enums;
+using IoTPlatform.Domain.ValueObjects;
 
 namespace IoTPlatform.Application.Abstractions.Repositories;
 

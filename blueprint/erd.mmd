@@ -1,0 +1,60 @@
+erDiagram
+    %% IoTPlatform - Entity Relationship Diagram (Phase 1, SQL Server schema)
+    %% Source of truth: the InitialCreate migration in src/IoTPlatform.Infrastructure/Persistence/Migrations.
+    %% Every column is NOT NULL. Keys: PK = primary key, FK = foreign key, UK = unique.
+    %% Enum columns store the enum name as text (nvarchar(30)).
+    DeviceAssets ||--o{ TelemetryMetrics : "records (ON DELETE CASCADE)"
+    DeviceAssets ||--o{ AlertRules : "is watched by (ON DELETE CASCADE)"
+    DeviceAssets ||--o{ MaintenanceLogs : "has history (ON DELETE NO ACTION, EF Restrict)"
+
+    DeviceAssets {
+        uniqueidentifier Id PK "PK_DeviceAssets"
+        nvarchar(11) SerialNumber UK "IX_DeviceAssets_SerialNumber (unique), format IOT-nnnn-AA"
+        nvarchar(100) Name
+        nvarchar(30) DeviceType "Sensor, Pump, Motor, Compressor, Gateway"
+        nvarchar(150) Location
+        nvarchar(30) Status "IX_DeviceAssets_Status; Provisioned, Active, UnderMaintenance, Decommissioned"
+        decimal OperatingMin "decimal(18,4); CK_DeviceAssets_OperatingRange_Positive: OperatingMin >= 0"
+        decimal OperatingMax "decimal(18,4); CK_DeviceAssets_OperatingRange_Order: OperatingMax > OperatingMin"
+        nvarchar(20) OperatingUnit
+        datetime2 InstalledOnUtc
+        datetime2 CreatedAtUtc
+    }
+
+    TelemetryMetrics {
+        uniqueidentifier Id PK "PK_TelemetryMetrics"
+        uniqueidentifier DeviceAssetId FK "FK_TelemetryMetrics_DeviceAssets_DeviceAssetId"
+        nvarchar(30) MetricType "Temperature, Pressure, Vibration, FlowRate, Humidity, Voltage"
+        decimal Value "decimal(18,4)"
+        nvarchar(20) Unit
+        datetime2 RecordedAtUtc
+    }
+
+    AlertRules {
+        uniqueidentifier Id PK "PK_AlertRules"
+        uniqueidentifier DeviceAssetId FK "FK_AlertRules_DeviceAssets_DeviceAssetId"
+        nvarchar(100) Name
+        nvarchar(30) MetricType
+        nvarchar(30) Operator "GreaterThan, LessThan"
+        decimal Threshold "decimal(18,4)"
+        nvarchar(30) Severity "Info, Warning, Critical"
+        bit IsEnabled
+    }
+
+    MaintenanceLogs {
+        uniqueidentifier Id PK "PK_MaintenanceLogs"
+        uniqueidentifier DeviceAssetId FK "FK_MaintenanceLogs_DeviceAssets_DeviceAssetId"
+        nvarchar(30) MaintenanceType "Inspection, Repair, PartReplacement, Calibration"
+        nvarchar(100) Technician
+        nvarchar(1000) Description
+        datetime2 PerformedOnUtc
+    }
+
+%% Indexes besides PKs:
+%%   IX_DeviceAssets_SerialNumber (unique)          DeviceAssets(SerialNumber)
+%%   IX_DeviceAssets_Status                          DeviceAssets(Status)
+%%   IX_TelemetryMetrics_DeviceAssetId_RecordedAtUtc TelemetryMetrics(DeviceAssetId, RecordedAtUtc)
+%%   IX_TelemetryMetrics_DeviceAssetId_MetricType    TelemetryMetrics(DeviceAssetId, MetricType)
+%%   IX_AlertRules_DeviceAssetId_MetricType          AlertRules(DeviceAssetId, MetricType)
+%%   IX_MaintenanceLogs_DeviceAssetId_PerformedOnUtc MaintenanceLogs(DeviceAssetId, PerformedOnUtc)
+%% Check constraints use CAST(... AS REAL) in the model so they also work on SQLite (tests); see the migration for the exact SQL.

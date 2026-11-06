@@ -91,27 +91,14 @@ public sealed class DeviceAsset : Entity
             throw new DeviceDecommissionedException(Id);
     }
 
-        public AlertRule AddAlertRule(
-    string name,
-    MetricType metricType,
-    ComparisonOperator @operator,
-    decimal threshold,
-    AlertSeverity severity)
-{
-    EnsureNotDecommissioned();
-
-    var rule = new AlertRule(
-        Id,
-        name,
-        metricType,
-        @operator,
-        threshold,
-        severity);
-
-    _alertRules.Add(rule);
-
-    return rule;
-}
+    public AlertRule AddAlertRule(string name, MetricType metricType, ComparisonOperator @operator,
+                                  decimal threshold, AlertSeverity severity)
+    {
+        EnsureNotDecommissioned();
+        var rule = new AlertRule(Id, name, metricType, @operator, threshold, severity);
+        _alertRules.Add(rule);
+        return rule;
+    }
 
     public MaintenanceLog LogMaintenance(MaintenanceType maintenanceType, string technician,
                                          string description, DateTime performedOnUtc)

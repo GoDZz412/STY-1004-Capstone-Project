@@ -1,3 +1,4 @@
+using IoTPlatform.Infrastructure.Seeding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
@@ -22,8 +23,14 @@ public sealed class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<IoT
             connectionString = DefaultConnectionString;
         }
 
+        // database update also loads the sample data (PHASE_1 §5.1); the loader skips a database that already has devices.
+        var seedLoader = new JsonSeedLoader();
+
         var options = new DbContextOptionsBuilder<IoTPlatformDbContext>()
             .UseSqlServer(connectionString)
+            .UseSeeding((context, _) => seedLoader.Seed((IoTPlatformDbContext)context))
+            .UseAsyncSeeding((context, _, cancellationToken) =>
+                seedLoader.SeedAsync((IoTPlatformDbContext)context, cancellationToken))
             .Options;
 
         return new IoTPlatformDbContext(options);

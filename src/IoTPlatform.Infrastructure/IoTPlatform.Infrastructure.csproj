@@ -11,8 +11,14 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.14" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.14" />
     <!-- Overrides the vulnerable 9.0.11 version pulled in by Microsoft.Data.SqlClient (NU1902/NU1903). -->
     <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Seed data is read at runtime from Seeding/Data next to the assembly (JsonSeedLoader). -->
+    <None Update="Seeding\Data\*.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <PropertyGroup>

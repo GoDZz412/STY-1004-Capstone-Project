@@ -1,0 +1,352 @@
+[
+  {
+    "serialNumber": "IOT-0001-PU",
+    "metricType": "Pressure",
+    "value": 6.8,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-28T08:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0001-PU",
+    "metricType": "Pressure",
+    "value": 7.1,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-28T12:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0001-PU",
+    "metricType": "Pressure",
+    "value": 8.2,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-28T16:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0001-PU",
+    "metricType": "Pressure",
+    "value": 9.6,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-28T20:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0001-PU",
+    "metricType": "Pressure",
+    "value": 8.7,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-29T00:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0001-PU",
+    "metricType": "Pressure",
+    "value": 7.9,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-29T04:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0001-PU",
+    "metricType": "Pressure",
+    "value": 6.9,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-29T08:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0001-PU",
+    "metricType": "Vibration",
+    "value": 6.7,
+    "unit": "mm/s",
+    "recordedAtUtc": "2026-10-29T12:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0002-PU",
+    "metricType": "Pressure",
+    "value": 5.0,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-28T08:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0002-PU",
+    "metricType": "Pressure",
+    "value": 6.2,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-28T12:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0002-PU",
+    "metricType": "Pressure",
+    "value": 7.1,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-28T16:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0002-PU",
+    "metricType": "Pressure",
+    "value": 7.8,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-28T20:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0002-PU",
+    "metricType": "Pressure",
+    "value": 7.3,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-29T00:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0002-PU",
+    "metricType": "Pressure",
+    "value": 6.8,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-29T04:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0002-PU",
+    "metricType": "Pressure",
+    "value": 6.0,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-29T08:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0002-PU",
+    "metricType": "Pressure",
+    "value": 5.7,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-29T12:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0003-MO",
+    "metricType": "Temperature",
+    "value": 68.0,
+    "unit": "°C",
+    "recordedAtUtc": "2026-10-28T08:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0003-MO",
+    "metricType": "Temperature",
+    "value": 71.0,
+    "unit": "°C",
+    "recordedAtUtc": "2026-10-28T12:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0003-MO",
+    "metricType": "Temperature",
+    "value": 73.0,
+    "unit": "°C",
+    "recordedAtUtc": "2026-10-28T16:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0003-MO",
+    "metricType": "Temperature",
+    "value": 76.0,
+    "unit": "°C",
+    "recordedAtUtc": "2026-10-28T20:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0003-MO",
+    "metricType": "Temperature",
+    "value": 78.0,
+    "unit": "°C",
+    "recordedAtUtc": "2026-10-29T00:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0003-MO",
+    "metricType": "Temperature",
+    "value": 74.0,
+    "unit": "°C",
+    "recordedAtUtc": "2026-10-29T04:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0003-MO",
+    "metricType": "Temperature",
+    "value": 70.0,
+    "unit": "°C",
+    "recordedAtUtc": "2026-10-29T08:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0003-MO",
+    "metricType": "Vibration",
+    "value": 6.3,
+    "unit": "mm/s",
+    "recordedAtUtc": "2026-10-29T12:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0004-CO",
+    "metricType": "Pressure",
+    "value": 8.0,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-28T08:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0004-CO",
+    "metricType": "Pressure",
+    "value": 9.0,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-28T12:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0004-CO",
+    "metricType": "Pressure",
+    "value": 10.6,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-28T16:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0004-CO",
+    "metricType": "Pressure",
+    "value": 9.8,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-28T20:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0004-CO",
+    "metricType": "Pressure",
+    "value": 9.4,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-29T00:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0004-CO",
+    "metricType": "Pressure",
+    "value": 8.8,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-29T04:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0004-CO",
+    "metricType": "Pressure",
+    "value": 8.5,
+    "unit": "bar",
+    "recordedAtUtc": "2026-10-29T08:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0004-CO",
+    "metricType": "Vibration",
+    "value": 4.2,
+    "unit": "mm/s",
+    "recordedAtUtc": "2026-10-29T12:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0005-SE",
+    "metricType": "FlowRate",
+    "value": 220.0,
+    "unit": "m³/h",
+    "recordedAtUtc": "2026-10-28T08:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0005-SE",
+    "metricType": "FlowRate",
+    "value": 180.0,
+    "unit": "m³/h",
+    "recordedAtUtc": "2026-10-28T12:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0005-SE",
+    "metricType": "FlowRate",
+    "value": 75.0,
+    "unit": "m³/h",
+    "recordedAtUtc": "2026-10-28T16:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0005-SE",
+    "metricType": "FlowRate",
+    "value": 35.0,
+    "unit": "m³/h",
+    "recordedAtUtc": "2026-10-28T20:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0005-SE",
+    "metricType": "FlowRate",
+    "value": 70.0,
+    "unit": "m³/h",
+    "recordedAtUtc": "2026-10-29T00:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0005-SE",
+    "metricType": "FlowRate",
+    "value": 110.0,
+    "unit": "m³/h",
+    "recordedAtUtc": "2026-10-29T04:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0005-SE",
+    "metricType": "FlowRate",
+    "value": 195.0,
+    "unit": "m³/h",
+    "recordedAtUtc": "2026-10-29T08:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0005-SE",
+    "metricType": "FlowRate",
+    "value": 240.0,
+    "unit": "m³/h",
+    "recordedAtUtc": "2026-10-29T12:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0007-GW",
+    "metricType": "Voltage",
+    "value": 12.2,
+    "unit": "V",
+    "recordedAtUtc": "2026-10-28T08:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0007-GW",
+    "metricType": "Voltage",
+    "value": 12.1,
+    "unit": "V",
+    "recordedAtUtc": "2026-10-28T12:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0007-GW",
+    "metricType": "Voltage",
+    "value": 11.8,
+    "unit": "V",
+    "recordedAtUtc": "2026-10-28T16:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0007-GW",
+    "metricType": "Voltage",
+    "value": 11.4,
+    "unit": "V",
+    "recordedAtUtc": "2026-10-28T20:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0007-GW",
+    "metricType": "Voltage",
+    "value": 11.7,
+    "unit": "V",
+    "recordedAtUtc": "2026-10-29T00:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0007-GW",
+    "metricType": "Voltage",
+    "value": 12.0,
+    "unit": "V",
+    "recordedAtUtc": "2026-10-29T04:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0007-GW",
+    "metricType": "Voltage",
+    "value": 12.3,
+    "unit": "V",
+    "recordedAtUtc": "2026-10-29T08:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0007-GW",
+    "metricType": "Voltage",
+    "value": 12.2,
+    "unit": "V",
+    "recordedAtUtc": "2026-10-29T12:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0008-PU",
+    "metricType": "Pressure",
+    "value": 4.7,
+    "unit": "bar",
+    "recordedAtUtc": "2025-06-14T08:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0008-PU",
+    "metricType": "Pressure",
+    "value": 5.3,
+    "unit": "bar",
+    "recordedAtUtc": "2025-06-14T12:00:00Z"
+  }
+]

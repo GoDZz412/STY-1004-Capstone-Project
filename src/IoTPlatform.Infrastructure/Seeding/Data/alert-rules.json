@@ -1,0 +1,92 @@
+[
+  {
+    "serialNumber": "IOT-0001-PU",
+    "name": "Intake pump high pressure",
+    "metricType": "Pressure",
+    "operator": "GreaterThan",
+    "threshold": 9.0,
+    "severity": "Critical",
+    "isEnabled": true
+  },
+  {
+    "serialNumber": "IOT-0001-PU",
+    "name": "Intake pump low pressure",
+    "metricType": "Pressure",
+    "operator": "LessThan",
+    "threshold": 2.0,
+    "severity": "Info",
+    "isEnabled": true
+  },
+  {
+    "serialNumber": "IOT-0001-PU",
+    "name": "Intake pump high vibration",
+    "metricType": "Vibration",
+    "operator": "GreaterThan",
+    "threshold": 6.0,
+    "severity": "Warning",
+    "isEnabled": true
+  },
+  {
+    "serialNumber": "IOT-0002-PU",
+    "name": "Filter feed pump high pressure",
+    "metricType": "Pressure",
+    "operator": "GreaterThan",
+    "threshold": 7.5,
+    "severity": "Warning",
+    "isEnabled": true
+  },
+  {
+    "serialNumber": "IOT-0003-MO",
+    "name": "Clarifier motor high temperature",
+    "metricType": "Temperature",
+    "operator": "GreaterThan",
+    "threshold": 75.0,
+    "severity": "Critical",
+    "isEnabled": true
+  },
+  {
+    "serialNumber": "IOT-0003-MO",
+    "name": "Clarifier motor high vibration",
+    "metricType": "Vibration",
+    "operator": "GreaterThan",
+    "threshold": 6.0,
+    "severity": "Warning",
+    "isEnabled": true
+  },
+  {
+    "serialNumber": "IOT-0004-CO",
+    "name": "Compressor high pressure",
+    "metricType": "Pressure",
+    "operator": "GreaterThan",
+    "threshold": 10.0,
+    "severity": "Critical",
+    "isEnabled": true
+  },
+  {
+    "serialNumber": "IOT-0005-SE",
+    "name": "Treated water low flow",
+    "metricType": "FlowRate",
+    "operator": "LessThan",
+    "threshold": 50.0,
+    "severity": "Critical",
+    "isEnabled": true
+  },
+  {
+    "serialNumber": "IOT-0007-GW",
+    "name": "Gateway low voltage",
+    "metricType": "Voltage",
+    "operator": "LessThan",
+    "threshold": 11.5,
+    "severity": "Warning",
+    "isEnabled": true
+  },
+  {
+    "serialNumber": "IOT-0008-PU",
+    "name": "Old backwash pump high pressure",
+    "metricType": "Pressure",
+    "operator": "GreaterThan",
+    "threshold": 5.0,
+    "severity": "Warning",
+    "isEnabled": false
+  }
+]

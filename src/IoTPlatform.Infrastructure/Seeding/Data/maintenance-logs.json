@@ -1,0 +1,58 @@
+[
+  {
+    "serialNumber": "IOT-0001-PU",
+    "maintenanceType": "Inspection",
+    "technician": "Maria Lopez",
+    "description": "Quarterly inspection: checked coupling alignment, seal leakage and bearing noise. No defects found.",
+    "performedOnUtc": "2026-09-15T08:30:00Z"
+  },
+  {
+    "serialNumber": "IOT-0002-PU",
+    "maintenanceType": "Repair",
+    "technician": "Maria Lopez",
+    "description": "Replaced worn mechanical seal after pressure drop alarm.",
+    "performedOnUtc": "2026-10-29T13:30:00Z"
+  },
+  {
+    "serialNumber": "IOT-0002-PU",
+    "maintenanceType": "Inspection",
+    "technician": "Daniel Okafor",
+    "description": "Post-repair check: seal dry, discharge pressure recovering. Pump kept under maintenance until the impeller is inspected.",
+    "performedOnUtc": "2026-10-31T09:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0003-MO",
+    "maintenanceType": "PartReplacement",
+    "technician": "Daniel Okafor",
+    "description": "Replaced drive-end bearing after rising vibration readings; regreased the non-drive end.",
+    "performedOnUtc": "2026-08-20T10:15:00Z"
+  },
+  {
+    "serialNumber": "IOT-0004-CO",
+    "maintenanceType": "Calibration",
+    "technician": "Aisha Rahman",
+    "description": "Calibrated the discharge pressure transmitter against a reference gauge (deviation 0.05 bar, adjusted).",
+    "performedOnUtc": "2026-09-30T14:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0005-SE",
+    "maintenanceType": "Calibration",
+    "technician": "Aisha Rahman",
+    "description": "Verified flow meter zero point and span with a portable ultrasonic meter; within tolerance.",
+    "performedOnUtc": "2026-10-01T11:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0006-SE",
+    "maintenanceType": "Inspection",
+    "technician": "Liam Chen",
+    "description": "Commissioning check after installation: mounting, wiring and enclosure seal verified. Not yet activated.",
+    "performedOnUtc": "2026-10-29T10:00:00Z"
+  },
+  {
+    "serialNumber": "IOT-0008-PU",
+    "maintenanceType": "Repair",
+    "technician": "Liam Chen",
+    "description": "Cracked pump casing found; repair judged uneconomical. Recommended replacement and decommissioning.",
+    "performedOnUtc": "2025-06-20T09:00:00Z"
+  }
+]
